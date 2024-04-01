@@ -71,11 +71,27 @@ void Window::createDateTimeEdit() {
 
     QLabel *dateLabel = new QLabel;
     QDateEdit *dateEdit = new QDateEdit(QDate::currentDate());
+    dateLabel->setText(tr("Appointment date(between %0 and %1):")
+                      .arg(dateEdit->minimumTime().toString(Qt::ISODate))
+                      .arg(dateEdit->maximumTime().toString(Qt::ISODate)));
     dateEdit->setDateRange(QDate(2005, 1, 1), QDate(2010, 12, 31));
 
+    QLabel *timeLabel = new QLabel;
+    QTimeEdit *timeEdit = new QTimeEdit(QTime::currentTime());
+    timeEdit->setTimeRange(QTime(9, 0, 0, 0), QTime(16, 30, 0, 0));
+    timeLabel->setText(tr("Appointment time (between %0 and %1):")
+                       .arg(timeEdit->minimumTime().toString(Qt::ISODate))
+                       .arg(timeEdit->maximumTime().toString(Qt::ISODate)));
+
+    meetingLabel = new QLabel;
+    meetingEdit = new QDateTimeEdit(QDateTime::currentDateTime());
+
     QVBoxLayout *dateLayout = new QVBoxLayout;
+
     dateLayout->addWidget(dateLabel);
     dateLayout->addWidget(dateEdit);
+    dateLayout->addWidget(timeLabel);
+    dateLayout->addWidget(timeEdit);
 
     editsGroup->setLayout(dateLayout);
 }

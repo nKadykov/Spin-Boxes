@@ -7,6 +7,7 @@ QT_BEGIN_NAMESPACE
 class QSpinBox;
 class QGroupBox;
 class QDateTimeEdit;
+class QLabel;
 QT_END_NAMESPACE
 
 class Window : public QWidget
@@ -24,5 +25,6 @@ private:
     QGroupBox *editsGroup;
     QSpinBox *groupSeparatorSpinBox;
     QDateTimeEdit *meetingEdit;
+    QLabel *meetingLabel;
 };
 #endif // WINDOW_H
